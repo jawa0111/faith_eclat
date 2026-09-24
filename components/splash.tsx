@@ -58,7 +58,7 @@ export function Splash() {
       />
 
       <div
-        className={`relative aspect-square w-[min(380px,78vw)] transition-all ease-out ${
+        className={`relative aspect-square w-[min(380px,78vw)] overflow-hidden rounded-full bg-bg-elevated drop-shadow-[0_18px_48px_rgba(36,31,26,.25)] transition-all ease-out ${
           leaving
             ? "scale-110 opacity-0 duration-[550ms]"
             : "scale-100 opacity-100 duration-300 motion-safe:animate-[splash-in_1s_cubic-bezier(.22,1.4,.44,1)_both] motion-reduce:animate-none"
@@ -70,7 +70,7 @@ export function Splash() {
           fill
           priority
           sizes="380px"
-          className="rounded-full object-contain drop-shadow-[0_18px_48px_rgba(36,31,26,.25)]"
+          className="object-contain"
         />
       </div>
     </div>

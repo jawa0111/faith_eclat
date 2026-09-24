@@ -6,7 +6,7 @@ export function ThankYouSection() {
     <section aria-label="Thank you for being here" className="pt-14 sm:pt-20">
       <div className="mx-auto flex max-w-[620px] flex-col items-center px-6 py-2 text-center sm:px-10">
           <div className="flex items-center gap-3">
-            <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full">
+            <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-bg-elevated">
               <Image src="/logo.jpg" alt={siteConfig.brand} fill sizes="40px" className="object-cover" />
             </span>
             <p className="text-xs font-semibold tracking-[.16em] text-gold-deep uppercase">
