@@ -1,26 +1,95 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #FBF7EF;
+  --bg-elevated: #FFFDF9;
+  --bg-card: #F1E9DA;
+  --ink: #241F1A;
+  --ink-soft: #756B5C;
+  --gold: #A9823C;
+  --gold-deep: #8A6A2C;
+  --rule: #E4DBC9;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-card: var(--bg-card);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-rule: var(--rule);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-work-sans);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.routine-scrollbar {
+  scrollbar-color: color-mix(in srgb, var(--gold) 45%, transparent) transparent;
+  scrollbar-width: thin;
+}
+
+.routine-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.routine-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.routine-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splash-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+    filter: blur(12px);
+  }
+  55% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.12);
+  }
 }

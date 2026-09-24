@@ -1,0 +1,643 @@
+<!doctype html>
+<title>Faith Éclat</title>
+<style>
+  :root{
+    --bg:#FBF6EC;
+    --bg-elevated:#FFFDF8;
+    --bg-card:#F5EEDD;
+    --ink:#2B2620;
+    --ink-soft:#6B6255;
+    --gold:#A8823C;
+    --gold-deep:#8A6A2C;
+    --sage:#4E5C46;
+    --sage-soft:#7C8B70;
+    --rose:#C97C8C;
+    --rule:#E4DCC8;
+    --shadow: 0 1px 2px rgba(43,38,32,.06), 0 8px 24px -12px rgba(43,38,32,.18);
+
+    --night-bg:#161F1A;
+    --night-bg-soft:#1E2B22;
+    --night-ink:#EFEAD9;
+    --night-ink-soft:#B9C2AE;
+    --night-gold:#D2AD68;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1B1913;
+      --bg-elevated:#221F17;
+      --bg-card:#26231A;
+      --ink:#F1EAD9;
+      --ink-soft:#B9AF9B;
+      --gold:#D3A85E;
+      --gold-deep:#E6C27E;
+      --sage:#93A583;
+      --sage-soft:#6E7D62;
+      --rose:#DFA2AF;
+      --rule:#3A3627;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 28px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#1B1913;
+    --bg-elevated:#221F17;
+    --bg-card:#26231A;
+    --ink:#F1EAD9;
+    --ink-soft:#B9AF9B;
+    --gold:#D3A85E;
+    --gold-deep:#E6C27E;
+    --sage:#93A583;
+    --sage-soft:#6E7D62;
+    --rose:#DFA2AF;
+    --rule:#3A3627;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 28px -12px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Work Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    padding-inline: max(20px, calc((100% - 1120px)/2));
+  }
+  h1,h2,h3{
+    font-family:"Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    font-weight:500;
+    line-height:1.1;
+    text-wrap:balance;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  img,svg{max-width:100%;}
+  .eyebrow{
+    font-size:.75rem;
+    font-weight:600;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+  }
+  .lede{
+    color:var(--ink-soft);
+    max-width:62ch;
+  }
+  section{
+    padding-block: clamp(48px, 8vw, 96px);
+    border-bottom:1px solid var(--rule);
+  }
+  section:last-of-type{border-bottom:none;}
+  .stack{display:flex;flex-direction:column;gap:14px;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:.5em;
+    font-family:"Work Sans", sans-serif;
+    font-weight:600;
+    font-size:.95rem;
+    letter-spacing:.01em;
+    padding: .85em 1.6em;
+    border-radius:999px;
+    border:1px solid transparent;
+    cursor:pointer;
+    text-decoration:none;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-primary{
+    background:var(--sage);
+    color:#F6F3E8;
+    box-shadow:var(--shadow);
+  }
+  .btn-primary:hover{transform:translateY(-1px); box-shadow:0 10px 24px -10px rgba(78,92,70,.55);}
+  .btn-ghost{
+    background:transparent;
+    border-color:var(--rule);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold-deep);}
+  @media (prefers-reduced-motion: reduce){
+    .btn{transition:none;}
+  }
+
+  /* header */
+  header.top{
+    position:sticky; top:0; z-index:40;
+    margin-inline: max(-20px, calc(-1 * ((100% - 1120px)/2)));
+    padding-inline: max(20px, calc((100% - 1120px)/2));
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--rule);
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px;
+    padding-block:12px;
+  }
+  .brandmark{display:flex; align-items:center; gap:10px; text-decoration:none;}
+  .brandmark svg{width:30px;height:30px; flex:none;}
+  .brandmark span{
+    font-family:"Fraunces", serif; font-weight:500;
+    font-size:1.05rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--ink);
+  }
+
+  /* hero */
+  .hero{
+    padding-block: clamp(56px, 10vw, 100px) clamp(40px,6vw,64px);
+    text-align:center;
+    display:flex; flex-direction:column; align-items:center; gap:20px;
+  }
+  .hero .mark{width:min(180px, 46vw); height:auto;}
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 3.6rem);
+    letter-spacing:.02em;
+    text-transform:uppercase;
+  }
+  .hero .tagline{
+    font-family:"Fraunces", serif;
+    font-style:italic;
+    font-size:clamp(1.15rem, 2.4vw, 1.5rem);
+    color:var(--gold-deep);
+  }
+  .hero .sub{color:var(--ink-soft); max-width:46ch;}
+  .hero .cta-row{display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:6px;}
+  .hero .scrollcue{
+    margin-top:18px; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--ink-soft); text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:4px;
+  }
+
+  /* product */
+  .product-grid{
+    display:grid; grid-template-columns: 1fr 1fr; gap:clamp(28px,5vw,64px);
+    align-items:center;
+  }
+  @media (max-width:760px){ .product-grid{grid-template-columns:1fr;} }
+  .jar-stage{
+    background:var(--bg-card);
+    border-radius:28px;
+    padding:clamp(28px,5vw,48px);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:var(--shadow);
+  }
+  .jar-stage svg{width:min(260px,70%); height:auto;}
+  .price-row{
+    display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+    font-variant-numeric:tabular-nums;
+  }
+  .price{font-family:"Fraunces",serif; font-size:2.1rem; font-weight:500; color:var(--ink);}
+  .price sup{font-size:.9rem; font-family:"Work Sans",sans-serif; color:var(--ink-soft); font-weight:500;}
+  .specs{
+    display:flex; flex-wrap:wrap; gap:8px 10px; padding:0; margin:2px 0 0; list-style:none;
+  }
+  .specs li{
+    border:1px solid var(--rule); border-radius:999px; padding:.4em 1em; font-size:.85rem; color:var(--ink-soft);
+    display:flex; align-items:center; gap:.4em;
+  }
+  .product-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;}
+  .note{font-size:.9rem; color:var(--ink-soft); border-left:2px solid var(--rule); padding-left:12px;}
+
+  /* story */
+  .story{max-width:66ch;}
+  .story p{margin:0 0 1em;}
+  .story p:last-child{margin-bottom:0;}
+  blockquote.pull{
+    font-family:"Fraunces",serif; font-style:italic; font-weight:500;
+    font-size:clamp(1.3rem,2.6vw,1.7rem);
+    color:var(--sage);
+    margin: 1.4em 0; padding-left:20px; border-left:3px solid var(--gold);
+  }
+
+  /* why grid */
+  .why-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:8px;
+  }
+  @media (max-width:760px){.why-grid{grid-template-columns:1fr;}}
+  .why-card{display:flex; flex-direction:column; gap:10px;}
+  .why-card svg{width:30px;height:30px; color:var(--sage);}
+  .why-card h3{font-size:1.15rem;}
+  .why-card p{color:var(--ink-soft); margin:0; font-size:.95rem;}
+
+  /* routine */
+  .patch-callout{
+    background:var(--bg-card); border:1px solid var(--rule); border-radius:18px;
+    padding:20px 24px; display:flex; gap:16px; align-items:flex-start; margin-top:28px;
+  }
+  .patch-callout svg{width:24px;height:24px; flex:none; margin-top:3px; color:var(--gold-deep);}
+  .patch-callout h3{font-size:1.05rem; margin-bottom:4px;}
+  .patch-callout p{margin:0; color:var(--ink-soft); font-size:.95rem;}
+
+  .duo{
+    display:grid; grid-template-columns:1fr 1fr; gap:2px;
+    margin-top:32px; border-radius:22px; overflow:hidden; box-shadow:var(--shadow);
+  }
+  @media (max-width:760px){ .duo{grid-template-columns:1fr;} }
+  .panel{padding:clamp(26px,4vw,40px);}
+  .panel-night{background:var(--night-bg); color:var(--night-ink);}
+  .panel-day{background:var(--bg-elevated); color:var(--ink);}
+  .panel .ptime{
+    display:flex; align-items:center; gap:10px; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .panel-night .ptime{color:var(--night-gold);}
+  .panel-day .ptime{color:var(--gold-deep);}
+  .panel h3{font-size:1.35rem; margin-bottom:10px;}
+  .panel-night h3{color:var(--night-ink);}
+  .panel p{margin:0 0 .9em; font-size:.95rem;}
+  .panel-night p{color:var(--night-ink-soft);}
+  .panel-day p{color:var(--ink-soft);}
+  .panel strong{color:inherit;}
+  .amount-chip{
+    display:inline-block; font-family:"Fraunces",serif; font-style:italic;
+    border:1px solid var(--night-gold); color:var(--night-gold);
+    border-radius:999px; padding:.3em 1em; font-size:.95rem; margin:6px 0 14px;
+  }
+  .panel-day .amount-chip{border-color:var(--gold); color:var(--gold-deep);}
+  .remedy-list{display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:10px 0 0; list-style:none;}
+  .remedy-list li{
+    font-size:.82rem; border:1px solid var(--rule); border-radius:999px; padding:.35em .9em; color:var(--ink-soft);
+  }
+  .divider-tag{
+    text-align:center; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-soft); margin-top:22px;
+  }
+
+  /* people */
+  .people-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:20px;}
+  .people-row span{
+    font-family:"Fraunces",serif; font-style:italic; font-size:1.05rem;
+    border-bottom:1px solid var(--rule); padding-bottom:2px; color:var(--sage);
+  }
+
+  /* safety */
+  .safety-grid{
+    display:grid; grid-template-columns:1.1fr 1fr; gap:32px; margin-top:8px; align-items:start;
+  }
+  @media (max-width:760px){.safety-grid{grid-template-columns:1fr;}}
+  .safety-grid ol{margin:0; padding-left:1.2em; color:var(--ink-soft); display:flex; flex-direction:column; gap:10px;}
+  .safety-grid ol li::marker{color:var(--gold-deep); font-weight:600;}
+  .policy-card{
+    background:var(--bg-card); border:1px solid var(--rule); border-radius:20px; padding:28px; box-shadow:var(--shadow);
+  }
+  .policy-card h3{font-size:1.15rem; margin-bottom:14px;}
+  .policy-row{display:flex; gap:12px; margin-bottom:14px;}
+  .policy-row:last-child{margin-bottom:0;}
+  .policy-icon{
+    flex:none; width:22px;height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:.8rem; font-weight:700; margin-top:2px;
+  }
+  .policy-icon.yes{background:color-mix(in srgb, var(--sage) 18%, transparent); color:var(--sage);}
+  .policy-icon.no{background:color-mix(in srgb, var(--rose) 20%, transparent); color:var(--rose);}
+  .policy-row p{margin:0; font-size:.92rem; color:var(--ink-soft);}
+  .policy-row strong{color:var(--ink); font-weight:600;}
+
+  /* faq */
+  details{border-bottom:1px solid var(--rule); padding-block:16px;}
+  details:first-of-type{border-top:1px solid var(--rule);}
+  summary{
+    cursor:pointer; font-family:"Fraunces",serif; font-size:1.05rem; font-weight:500;
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    list-style:none;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{
+    content:"+"; font-family:"Work Sans",sans-serif; font-size:1.3rem; color:var(--gold-deep); flex:none;
+    transition:transform .15s ease;
+  }
+  details[open] summary::after{content:"–";}
+  details p{color:var(--ink-soft); margin:10px 0 0; max-width:62ch; font-size:.95rem;}
+
+  /* closing */
+  .closing{text-align:center; display:flex; flex-direction:column; align-items:center; gap:16px;}
+  .closing .quote{
+    font-family:"Fraunces",serif; font-style:italic; font-weight:500;
+    font-size:clamp(1.5rem,3.4vw,2.1rem); color:var(--sage); max-width:20ch;
+  }
+  .closing .wordmark{
+    font-family:"Fraunces",serif; letter-spacing:.14em; text-transform:uppercase; font-size:.85rem; color:var(--gold-deep);
+  }
+
+  footer{
+    padding-block:40px 56px; display:flex; flex-direction:column; gap:14px; align-items:center; text-align:center;
+    color:var(--ink-soft); font-size:.88rem;
+  }
+  footer .contact-row{display:flex; gap:18px; flex-wrap:wrap; justify-content:center;}
+  footer a{text-decoration:none; border-bottom:1px solid var(--rule);}
+  footer a:hover{border-color:var(--gold);}
+  footer .fine{max-width:56ch; font-size:.78rem; opacity:.85;}
+
+  @keyframes rise{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .hero > *{animation: rise .6s ease both;}
+    .hero .mark{animation-delay:0s;}
+    .hero h1{animation-delay:.08s;}
+    .hero .tagline{animation-delay:.14s;}
+    .hero .sub{animation-delay:.2s;}
+    .hero .cta-row{animation-delay:.26s;}
+    .hero .scrollcue{animation-delay:.32s;}
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap">
+
+<header class="top">
+  <a class="brandmark" href="#top">
+    <svg id="logo-mini" viewBox="0 0 100 100" aria-hidden="true"></svg>
+    <span>Faith Éclat</span>
+  </a>
+  <a class="btn btn-primary" style="padding:.6em 1.2em; font-size:.85rem;" href="https://wa.me/94756296533?text=Hi%20Faith%20%C3%89clat!%20I'd%20like%20to%20order%20the%20Glow%20Cream%20(20g%2C%20LKR%203%2C000).%0AName%3A%20%0AQuantity%3A%20%0ADelivery%20address%3A%20" target="_blank" rel="noopener">Order on WhatsApp</a>
+</header>
+
+<main id="top">
+
+  <section class="hero" aria-label="Introduction">
+    <svg class="mark" id="logo-hero" viewBox="0 0 220 220" aria-hidden="true"></svg>
+    <h1>Faith Éclat</h1>
+    <p class="tagline">Glow with Confidence.</p>
+    <p class="sub">Your skin. Your glow. Your confidence. A night skincare ritual inspired by a personal discovery, made to leave your skin looking naturally radiant.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#product">Shop the Glow Cream</a>
+      <a class="btn btn-ghost" href="#story">Read our story</a>
+    </div>
+    <a class="scrollcue" href="#product">Scroll to explore ↓</a>
+  </section>
+
+  <section id="product" aria-label="Product">
+    <div class="product-grid">
+      <div class="jar-stage">
+        <svg viewBox="0 0 200 220" role="img" aria-label="Faith Éclat Glow Cream jar illustration">
+          <ellipse cx="100" cy="200" rx="62" ry="10" fill="var(--rule)" opacity=".5"/>
+          <rect x="42" y="70" width="116" height="122" rx="18" fill="var(--bg-elevated)" stroke="var(--rule)"/>
+          <rect x="42" y="70" width="116" height="26" rx="13" fill="var(--gold)" opacity=".14"/>
+          <ellipse cx="100" cy="70" rx="58" ry="16" fill="var(--gold)"/>
+          <ellipse cx="100" cy="66" rx="58" ry="16" fill="var(--gold-deep)"/>
+          <ellipse cx="100" cy="64" rx="50" ry="11" fill="var(--bg-card)"/>
+          <circle cx="100" cy="145" r="34" fill="none" stroke="var(--gold)" stroke-width="1.4"/>
+          <circle cx="100" cy="145" r="29" fill="none" stroke="var(--gold)" stroke-width="1"/>
+          <text x="100" y="153" text-anchor="middle" font-family="Fraunces, serif" font-size="30" fill="var(--gold-deep)">F</text>
+        </svg>
+      </div>
+      <div class="stack">
+        <p class="eyebrow">Glow Cream · Night Ritual</p>
+        <h2 style="font-size:clamp(1.7rem,3vw,2.2rem);">FAITH ÉCLAT — Glow Cream</h2>
+        <div class="price-row">
+          <span class="price">LKR 3,000<sup> / 20g jar</sup></span>
+        </div>
+        <ul class="specs" aria-label="Product details">
+          <li>🇵🇰 Imported from Pakistan</li>
+          <li>🌙 Night-time use</li>
+          <li>20g tin</li>
+        </ul>
+        <p class="lede">A skincare experience inspired by a personal discovery — created to complement your routine and leave your skin looking naturally radiant.</p>
+        <div class="product-cta">
+          <a class="btn btn-primary" href="https://wa.me/94756296533?text=Hi%20Faith%20%C3%89clat!%20I'd%20like%20to%20order%20the%20Glow%20Cream%20(20g%2C%20LKR%203%2C000).%0AName%3A%20%0AQuantity%3A%20%0ADelivery%20address%3A%20" target="_blank" rel="noopener">Order on WhatsApp</a>
+          <a class="btn btn-ghost" href="mailto:faitheclat.lk@gmail.com">Email us</a>
+        </div>
+        <p class="note">To order: send us your name, contact number, quantity and delivery details on WhatsApp — we'll guide you through the next steps.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="story" aria-label="Our story">
+    <p class="eyebrow">The story behind Faith Éclat</p>
+    <h2 style="font-size:clamp(1.7rem,3vw,2.2rem); margin-top:6px;">It started with a discovery.</h2>
+    <div class="story" style="margin-top:20px;">
+      <p>Faith Éclat wasn't created from a business idea. It started with a personal experience.</p>
+      <p>During my time in Pakistan, I became friends with a Pakistani family in my neighbourhood. One of the women introduced me to this cream and showed me how she used it. I decided to try it for myself — and I was pleasantly surprised by the way my skin looked and felt, especially the appearance of pigmentation and pimple marks.</p>
+      <blockquote class="pull">"Then I shared it with the women in my family — my mother, sister, aunt and a close friend. Their experiences encouraged me to share it beyond my own family."</blockquote>
+      <p>That little discovery became Faith Éclat. And now, I'm bringing that experience to you.</p>
+    </div>
+  </section>
+
+  <section aria-label="Why Faith Éclat">
+    <p class="eyebrow">Why Faith Éclat?</p>
+    <h2 style="font-size:clamp(1.7rem,3vw,2.2rem); margin-top:6px;">A glow that still looks like you.</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="8"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2"/></svg>
+        <h3>A natural-looking glow</h3>
+        <p>Not an overly pale or artificial finish — just a fresh, radiant appearance that complements your own skin.</p>
+      </div>
+      <div class="why-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3v18M6 8l6-5 6 5M6 16l6 5 6-5"/></svg>
+        <h3>Less is more</h3>
+        <p>You don't need to cover your skin in cream. A small amount is enough — consistency matters more than quantity.</p>
+      </div>
+      <div class="why-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <h3>A routine, not a quick fix</h3>
+        <p>Faith Éclat works best paired with a consistent skincare routine, moisturization and sun protection.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="How to use Faith Éclat">
+    <p class="eyebrow">Your Faith Éclat routine</p>
+    <h2 style="font-size:clamp(1.7rem,3vw,2.2rem); margin-top:6px;">Night ritual, day protection.</h2>
+
+    <div class="patch-callout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7l-9-5Z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div>
+        <h3>Step 0 — Patch test, always</h3>
+        <p>Before applying to your face, apply a small amount to your hand or behind your ear. Give your skin time to respond — if everything feels comfortable, begin using it as directed.</p>
+      </div>
+    </div>
+
+    <div class="duo">
+      <div class="panel panel-night">
+        <div class="ptime">🌙 Night</div>
+        <h3>Apply before bed</h3>
+        <span class="amount-chip">3–4 tiny drops · pea-sized</span>
+        <p>After cleansing, gently blend a small amount into clean, dry skin using your fingertips.</p>
+        <p><strong>More cream does not mean faster results.</strong> A little is enough.</p>
+      </div>
+      <div class="panel panel-day">
+        <div class="ptime">☀️ Day — going outside</div>
+        <h3>Moisturize &amp; protect</h3>
+        <p><strong>Moisturizer → Sunscreen → Makeup</strong> or anything else you normally apply.</p>
+        <p>Sunscreen is especially important when you're outdoors — don't skip it.</p>
+      </div>
+    </div>
+    <div class="duo" style="margin-top:2px;">
+      <div class="panel panel-day" style="grid-column:1/-1;">
+        <div class="ptime">🏠 Day — staying indoors</div>
+        <p>Keep your daytime routine simple with gentle, natural skincare. Try natural aloe vera gel twice a week for 10–15 minutes, then wash it off.</p>
+        <ul class="remedy-list">
+          <li>🌿 Aloe vera gel</li>
+          <li>🫘 Chickpea flour + honey</li>
+          <li>🍅 Tomato + honey</li>
+          <li>🥭 Papaya</li>
+        </ul>
+        <p style="margin-top:12px;">Always patch-test anything new before putting it on your face.</p>
+      </div>
+    </div>
+    <p class="divider-tag">Glow needs maintenance — Faith Éclat is for night; daytime is for protecting what you've built.</p>
+  </section>
+
+  <section aria-label="Real experiences">
+    <p class="eyebrow">Real people. Real experiences.</p>
+    <h2 style="font-size:clamp(1.7rem,3vw,2.2rem); margin-top:6px;">Before it was a brand, it was shared.</h2>
+    <p class="lede" style="margin-top:14px;">Before Faith Éclat became a brand, it was something shared among people close to me — and their honest experiences gave me the confidence to take the next step.</p>
+    <div class="people-row">
+      <span>My mother</span><span>My sister</span><span>My aunt</span><span>My friend</span>
+    </div>
+    <p class="note" style="margin-top:20px;">Individual experiences can vary — skincare results are not guaranteed to be identical for everyone.</p>
+  </section>
+
+  <section id="safety" aria-label="Safety and returns">
+    <p class="eyebrow">Your skin comes first</p>
+    <h2 style="font-size:clamp(1.7rem,3vw,2.2rem); margin-top:6px;">Safety, allergies &amp; returns.</h2>
+    <div class="safety-grid" style="margin-top:24px;">
+      <div class="stack">
+        <p class="lede">Everyone's skin is different. Please take these steps seriously, even if you've never experienced an allergy before:</p>
+        <ol>
+          <li>Patch-test the product before your first use — a small amount on your hand or behind your ear.</li>
+          <li>If you experience irritation or a suspected allergic reaction, discontinue use immediately.</li>
+          <li>Speak to your own doctor or a qualified healthcare professional for advice on how to proceed.</li>
+          <li>If you'd like to request a return on this basis, keep your medical documentation — you'll need it.</li>
+        </ol>
+      </div>
+      <div class="policy-card">
+        <h3>Allergy-related returns</h3>
+        <div class="policy-row">
+          <span class="policy-icon yes">✓</span>
+          <p><strong>With documentation:</strong> a suspected allergic reaction supported by medical documentation from a qualified healthcare professional is eligible for a refund.</p>
+        </div>
+        <div class="policy-row">
+          <span class="policy-icon no">✕</span>
+          <p><strong>Without documentation:</strong> no supporting medical documentation means no allergy-related return.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Frequently asked questions">
+    <p class="eyebrow">FAQ</p>
+    <h2 style="font-size:clamp(1.7rem,3vw,2.2rem); margin-top:6px;">A few common questions.</h2>
+    <div style="margin-top:20px;">
+      <details open>
+        <summary>How should I use it?</summary>
+        <p>After cleansing your face, apply a small amount to clean, dry skin and gently massage it in at night. A little goes a long way.</p>
+      </details>
+      <details>
+        <summary>Can I use it during the day?</summary>
+        <p>Faith Éclat is designed for night use. During the day, maintain your skin with your usual moisturizer and broad-spectrum sunscreen, especially when going outdoors.</p>
+      </details>
+      <details>
+        <summary>When will I see results?</summary>
+        <p>Every person's skin is different. Some people notice changes sooner, others need more time and consistent use — results are individual and cannot be guaranteed within a specific number of days.</p>
+      </details>
+      <details>
+        <summary>Do I need a patch test?</summary>
+        <p>Yes, always — even if you've never experienced an allergy before. Apply a small amount behind your ear or on your inner arm and monitor it before applying to your face.</p>
+      </details>
+      <details>
+        <summary>How do I place an order?</summary>
+        <p>Message us on WhatsApp with your name, contact number, quantity and delivery details, and our team will guide you through the next steps.</p>
+      </details>
+      <details>
+        <summary>Where is it from?</summary>
+        <p>Faith Éclat Glow Cream is imported from Pakistan and made available to customers across Sri Lanka.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="closing" aria-label="Thank you">
+    <p class="quote">"Every glow starts with a little faith."</p>
+    <a class="btn btn-primary" href="https://wa.me/94756296533?text=Hi%20Faith%20%C3%89clat!%20I'd%20like%20to%20order%20the%20Glow%20Cream%20(20g%2C%20LKR%203%2C000).%0AName%3A%20%0AQuantity%3A%20%0ADelivery%20address%3A%20" target="_blank" rel="noopener">Order on WhatsApp</a>
+    <p class="wordmark">Faith Éclat · Glow with Confidence</p>
+  </section>
+
+</main>
+
+<footer>
+  <svg viewBox="0 0 100 100" style="width:36px;height:36px;" id="logo-footer" aria-hidden="true"></svg>
+  <div class="contact-row">
+    <span>🇱🇰 Sri Lanka</span>
+    <a href="https://wa.me/94756296533" target="_blank" rel="noopener">WhatsApp: 75 629 6533</a>
+    <a href="mailto:faitheclat.lk@gmail.com">faitheclat.lk@gmail.com</a>
+  </div>
+  <p class="fine">Skincare results differ from person to person; Faith Éclat does not guarantee a particular result or timeframe. Product information is general and not medical advice. Returns follow our Return &amp; Product Care Policy.</p>
+</footer>
+
+<script>
+(function(){
+  function buildMark(svg, size){
+    const NS = "http://www.w3.org/2000/svg";
+    const cx = size/2, cy = size/2;
+    svg.setAttribute("viewBox", `0 0 ${size} ${size}`);
+
+    const bg = document.createElementNS(NS,"circle");
+    bg.setAttribute("cx",cx); bg.setAttribute("cy",cy); bg.setAttribute("r", size*0.48);
+    bg.setAttribute("fill","none");
+    bg.setAttribute("stroke","var(--gold)");
+    bg.setAttribute("stroke-width", size*0.012);
+    svg.appendChild(bg);
+
+    const ring = document.createElementNS(NS,"circle");
+    ring.setAttribute("cx",cx); ring.setAttribute("cy",cy); ring.setAttribute("r", size*0.44);
+    ring.setAttribute("fill","none");
+    ring.setAttribute("stroke","var(--gold)");
+    ring.setAttribute("stroke-width", size*0.006);
+    svg.appendChild(ring);
+
+    function leaf(x,y,w,h,angle,color){
+      const el = document.createElementNS(NS,"ellipse");
+      el.setAttribute("cx",x); el.setAttribute("cy",y);
+      el.setAttribute("rx",w); el.setAttribute("ry",h);
+      el.setAttribute("fill",color);
+      el.setAttribute("transform", `rotate(${angle} ${x} ${y})`);
+      svg.appendChild(el);
+    }
+
+    const leafCount = 7;
+    const rBase = size*0.33;
+    for (let side=-1; side<=1; side+=2){
+      for (let i=0;i<leafCount;i++){
+        const t = i/(leafCount-1);
+        const angle = 178 + t*92;
+        const rad = angle * Math.PI/180;
+        const r = rBase * (1 - t*0.12);
+        const x = cx + side * r * Math.sin(rad);
+        const y = cy - r * Math.cos(rad);
+        const rx = size*0.05*(1 - t*0.35);
+        const ry = size*0.022*(1 - t*0.25);
+        leaf(x, y, rx, ry, side*angle, "var(--sage)");
+      }
+    }
+
+    const flower = document.createElementNS(NS,"g");
+    const fx = cx + size*0.30, fy = cy - size*0.20;
+    for (let p=0;p<5;p++){
+      const a = p*72;
+      const el = document.createElementNS(NS,"ellipse");
+      el.setAttribute("cx", fx); el.setAttribute("cy", fy - size*0.028);
+      el.setAttribute("rx", size*0.024); el.setAttribute("ry", size*0.038);
+      el.setAttribute("fill","var(--rose)");
+      el.setAttribute("transform", `rotate(${a} ${fx} ${fy})`);
+      flower.appendChild(el);
+    }
+    const center = document.createElementNS(NS,"circle");
+    center.setAttribute("cx",fx); center.setAttribute("cy",fy); center.setAttribute("r", size*0.016);
+    center.setAttribute("fill","var(--gold)");
+    flower.appendChild(center);
+    svg.appendChild(flower);
+
+    const text = document.createElementNS(NS,"text");
+    text.setAttribute("x",cx); text.setAttribute("y", cy + size*0.10);
+    text.setAttribute("text-anchor","middle");
+    text.setAttribute("font-family","Fraunces, serif");
+    text.setAttribute("font-size", size*0.30);
+    text.setAttribute("fill","var(--gold-deep)");
+    text.textContent = "F";
+    svg.appendChild(text);
+  }
+
+  buildMark(document.getElementById("logo-hero"), 220);
+  buildMark(document.getElementById("logo-mini"), 100);
+  buildMark(document.getElementById("logo-footer"), 100);
+})();
+</script>
