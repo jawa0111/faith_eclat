@@ -29,6 +29,14 @@ export function Footer() {
         >
           Instagram: {siteConfig.instagramHandle}
         </a>
+        <a
+          href={siteConfig.facebookUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="border-b border-rule hover:border-gold"
+        >
+          Facebook
+        </a>
       </div>
       <Link href="/terms" className="border-b border-rule text-[.8rem] hover:border-gold">
         Terms &amp; Conditions

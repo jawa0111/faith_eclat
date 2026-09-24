@@ -6,6 +6,7 @@ export const siteConfig = {
   email: "faitheclat.lk@gmail.com",
   instagramHandle: "@faitheclat.lk",
   instagramUrl: "https://www.instagram.com/faitheclat.lk/",
+  facebookUrl: "https://www.facebook.com/share/1C2fBKZCbd/?mibextid=wwXIfr",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 };
 
