@@ -7,6 +7,8 @@ export const siteConfig = {
   instagramHandle: "@faitheclat.lk",
   instagramUrl: "https://www.instagram.com/faitheclat.lk/",
   facebookUrl: "https://www.facebook.com/share/1C2fBKZCbd/?mibextid=wwXIfr",
+  tiktokHandle: "@faith.eclat",
+  tiktokUrl: "https://www.tiktok.com/@faith.eclat",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 };
 

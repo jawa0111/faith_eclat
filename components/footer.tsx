@@ -37,6 +37,14 @@ export function Footer() {
         >
           Facebook
         </a>
+        <a
+          href={siteConfig.tiktokUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="border-b border-rule hover:border-gold"
+        >
+          TikTok: {siteConfig.tiktokHandle}
+        </a>
       </div>
       <Link href="/terms" className="border-b border-rule text-[.8rem] hover:border-gold">
         Terms &amp; Conditions
