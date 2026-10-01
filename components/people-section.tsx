@@ -25,16 +25,14 @@ export function PeopleSection() {
           <div className="mt-6 flex flex-col gap-2">
             {peopleRows.map((row) => (
               <div key={row.join("-")} className="flex items-center gap-4">
-                {row.map((person, i) => (
+                {row.map((person) => (
                   <span key={person} className="flex items-center gap-4">
+                    <span aria-hidden className="text-[.7rem] text-gold/60">
+                      ◆
+                    </span>
                     <span className="font-display text-[1.15rem] italic text-gold-deep">
                       {person}
                     </span>
-                    {i < row.length - 1 && (
-                      <span aria-hidden className="text-[.7rem] text-gold/60">
-                        ◆
-                      </span>
-                    )}
                   </span>
                 ))}
               </div>
