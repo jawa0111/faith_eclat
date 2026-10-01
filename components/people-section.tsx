@@ -1,6 +1,9 @@
 import { TestimonialCarousel } from "@/components/testimonial-carousel";
 
-const people = ["My mother.", "My sister.", "My aunt.", "My friend."];
+const peopleRows = [
+  ["My mother.", "My sister."],
+  ["My aunt.", "My friend."],
+];
 
 const reviews = [
   "Amazing product! I started using Faith Éclat cream recently and I'm genuinely impressed with the results. It absorbed well, non-sticky, and gave my skin a natural glow. I can see a visible difference in my skin tone. My skin is glowing like never before. No side effects for me — 100% satisfied. Thank you so much ❤️",
@@ -19,16 +22,22 @@ export function PeopleSection() {
             Before Faith Éclat became a brand, it was something shared among people close to me.
           </p>
 
-          <div className="mt-6 flex flex-wrap items-center justify-start gap-x-4 gap-y-2">
-            {people.map((person, i) => (
-              <span key={person} className="flex items-center gap-4">
-                <span className="font-display text-[1.15rem] italic text-gold-deep">{person}</span>
-                {i < people.length - 1 && (
-                  <span aria-hidden className="text-[.7rem] text-gold/60">
-                    ◆
+          <div className="mt-6 flex flex-col gap-2">
+            {peopleRows.map((row) => (
+              <div key={row.join("-")} className="flex items-center gap-4">
+                {row.map((person, i) => (
+                  <span key={person} className="flex items-center gap-4">
+                    <span className="font-display text-[1.15rem] italic text-gold-deep">
+                      {person}
+                    </span>
+                    {i < row.length - 1 && (
+                      <span aria-hidden className="text-[.7rem] text-gold/60">
+                        ◆
+                      </span>
+                    )}
                   </span>
-                )}
-              </span>
+                ))}
+              </div>
             ))}
           </div>
 
