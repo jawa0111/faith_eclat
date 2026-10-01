@@ -9,7 +9,7 @@ export function Hero() {
       className="flex min-h-[calc(100svh-56px)] flex-col items-center gap-5 pt-10 pb-8 text-center sm:min-h-0 sm:pt-20 sm:pb-16"
     >
       <span className="relative block aspect-square w-[min(220px,54vw)] overflow-hidden rounded-full bg-bg-elevated motion-safe:animate-[rise_.6s_ease_both]">
-        <Image src="/logo.jpg" alt={siteConfig.brand} fill sizes="220px" className="object-contain" priority />
+        <Image src="/logo.webp" alt={siteConfig.brand} fill sizes="220px" className="object-contain" priority />
       </span>
       <h1
         className="text-balance font-display text-[clamp(2.4rem,6vw,3.6rem)] font-medium uppercase tracking-[.02em] motion-safe:animate-[rise_.6s_ease_both_.08s]"

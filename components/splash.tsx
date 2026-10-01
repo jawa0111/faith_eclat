@@ -65,7 +65,7 @@ export function Splash() {
         }`}
       >
         <Image
-          src="/logo.jpg"
+          src="/logo.webp"
           alt={`${siteConfig.brand} — ${siteConfig.tagline}`}
           fill
           priority

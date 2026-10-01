@@ -10,7 +10,7 @@ await sharp("assets/product-photos/f6.jpeg")
   .modulate({ saturation: 0.9, brightness: 1.04, hue: 4 })
   .linear(1.05, -6)
   .sharpen({ sigma: 0.6 })
-  .jpeg({ quality: 90, chromaSubsampling: "4:4:4" })
-  .toFile("public/story.jpg");
+  .webp({ quality: 82 })
+  .toFile("public/story.webp");
 
-console.log("wrote public/story.jpg");
+console.log("wrote public/story.webp");

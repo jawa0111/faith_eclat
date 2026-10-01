@@ -4,10 +4,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const slides = [
-  { src: "/carousel/1.jpg", alt: "Faith Éclat Glow Cream jar, closed, resting on natural grass" },
-  { src: "/carousel/2.jpg", alt: "Faith Éclat Glow Cream jar showing the cream inside the jar" },
-  { src: "/carousel/3.jpg", alt: "Four Faith Éclat Glow Cream jars in silver and black lid finishes" },
-  { src: "/carousel/4.jpg", alt: "Faith Éclat Glow Cream jars styled outdoors among greenery" },
+  { src: "/carousel/1.webp", alt: "Faith Éclat Glow Cream jar, closed, resting on natural grass" },
+  { src: "/carousel/2.webp", alt: "Faith Éclat Glow Cream jar showing the cream inside the jar" },
+  { src: "/carousel/3.webp", alt: "Four Faith Éclat Glow Cream jars in silver and black lid finishes" },
+  { src: "/carousel/4.webp", alt: "Faith Éclat Glow Cream jars styled outdoors among greenery" },
 ];
 
 const AUTO_ADVANCE_MS = 4000;

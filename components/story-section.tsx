@@ -37,7 +37,7 @@ export function StorySection() {
         <div className="order-1 sm:order-2">
           <div className="relative aspect-square w-full max-w-[420px] mx-auto overflow-hidden rounded-[24px] shadow-[0_1px_2px_rgba(43,38,32,.06),0_8px_24px_-12px_rgba(43,38,32,.18)] sm:max-w-none">
             <Image
-              src="/story.jpg"
+              src="/story.webp"
               alt="Faith Éclat Glow Cream jars, the beginning of the story"
               fill
               sizes="(min-width: 640px) 45vw, 90vw"

@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <footer className="flex flex-col items-center gap-3.5 py-12 text-center text-[.88rem] text-ink-soft sm:pb-14">
       <span className="relative block h-9 w-9 overflow-hidden rounded-full bg-bg-elevated">
-        <Image src="/logo.jpg" alt="" fill sizes="36px" className="object-cover" />
+        <Image src="/logo.webp" alt="" fill sizes="36px" className="object-cover" />
       </span>
       <div className="flex flex-wrap justify-center gap-4.5">
         <span>🇱🇰 Sri Lanka</span>
