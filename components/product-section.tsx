@@ -23,7 +23,7 @@ export function ProductSection() {
           </h2>
 
           <p className="font-display text-[1.4rem] font-medium [font-variant-numeric:tabular-nums]">
-            {product.weightGrams}g · {product.currency} {product.price.toLocaleString()}
+            {product.currency} {product.price.toLocaleString()}
           </p>
 
           <p className="flex items-center gap-1.5 text-sm text-ink-soft">
