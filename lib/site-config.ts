@@ -16,7 +16,7 @@ export const product = {
   id: "glow-cream-20g",
   name: "Glow Cream",
   weightGrams: 20,
-  price: 3000,
+  price: 2990,
   currency: "LKR",
   origin: "Pakistan",
 };

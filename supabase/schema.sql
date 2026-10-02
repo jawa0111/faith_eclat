@@ -55,5 +55,5 @@ create policy "Public can create orders"
   with check (status = 'pending');
 
 insert into products (id, name, description, weight_grams, price, currency, origin)
-values ('glow-cream-20g', 'Glow Cream', 'Night-use glow cream imported from Pakistan.', 20, 3000, 'LKR', 'Pakistan')
+values ('glow-cream-20g', 'Glow Cream', 'Night-use glow cream imported from Pakistan.', 20, 2990, 'LKR', 'Pakistan')
 on conflict (id) do nothing;

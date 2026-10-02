@@ -42,7 +42,7 @@ const clauses = [
     title: "6. Pricing & Payment",
     body: [
       "All displayed prices are stated in Sri Lankan Rupees (LKR) unless otherwise specified.",
-      "The current listed price of FAITH ÉCLAT Glow Cream is LKR 3,000 for 20g. Prices may change, but any confirmed order will be handled according to the price communicated at the time of confirmation.",
+      "The current listed price of FAITH ÉCLAT Glow Cream is LKR 2,990 for 20g. Prices may change, but any confirmed order will be handled according to the price communicated at the time of confirmation.",
     ],
   },
   {
