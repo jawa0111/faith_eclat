@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Work_Sans } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { Splash } from "@/components/splash";
 import "./globals.css";
 
@@ -25,15 +25,25 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
   return (
     <html lang="en" data-theme="light" className={`${fraunces.variable} ${workSans.variable}`}>
       <body className="min-h-full overflow-x-clip font-body text-[16px] leading-relaxed text-ink bg-bg antialiased">
+        {gtmId && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        )}
         <Splash />
         {children}
       </body>
-      {gaId && <GoogleAnalytics gaId={gaId} />}
+      {gtmId && <GoogleTagManager gtmId={gtmId} />}
     </html>
   );
 }
