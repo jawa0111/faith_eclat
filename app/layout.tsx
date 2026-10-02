@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Work_Sans } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Splash } from "@/components/splash";
 import "./globals.css";
 
@@ -24,12 +25,15 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
   return (
     <html lang="en" data-theme="light" className={`${fraunces.variable} ${workSans.variable}`}>
       <body className="min-h-full overflow-x-clip font-body text-[16px] leading-relaxed text-ink bg-bg antialiased">
         <Splash />
         {children}
       </body>
+      {gaId && <GoogleAnalytics gaId={gaId} />}
     </html>
   );
 }
