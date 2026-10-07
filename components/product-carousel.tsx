@@ -7,7 +7,6 @@ const slides = [
   { src: "/carousel/1.webp", alt: "Faith Éclat Glow Cream jar lit dramatically on a bed of moss" },
   { src: "/carousel/2.webp", alt: "Faith Éclat Glow Cream jar, closed, resting on natural grass" },
   { src: "/carousel/3.webp", alt: "Four Faith Éclat Glow Cream jars in silver and black lid finishes" },
-  { src: "/carousel/4.webp", alt: "Faith Éclat Glow Cream jars styled outdoors among greenery" },
 ];
 
 const AUTO_ADVANCE_MS = 4000;

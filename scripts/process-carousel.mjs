@@ -11,7 +11,6 @@ const sources = [
   { in: "assets/product-photos/f9.jpeg", out: "1.webp", position: "centre" },
   { in: "assets/product-photos/f3.jpeg", out: "2.webp", position: "centre" },
   { in: "assets/product-photos/f4.jpeg", out: "3.webp", position: "centre" },
-  { in: "assets/product-photos/f7.jpeg", out: "4.webp", position: "attention" },
 ];
 
 for (const { in: input, out, position } of sources) {
